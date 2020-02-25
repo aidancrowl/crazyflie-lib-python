@@ -2,59 +2,66 @@
 # used to model a desired trajectory for the Crazyflie.
 
 import scipy.integrate as integrate
-#test comment for Bryan
-pos_init = []
-vel_init = []
-pos_final = []
-vel_final = []
-time = 0
 
-def get_inputs(): # pos_init, vel_init, pos_final, vel_final, time):
+r_o = []
+v_o = []
+r_f = []
+v_f = []
+t_o = 0
+t_f = 0
+
+def get_inputs(r_o, v_o, r_f, v_f, t_o, t_f): # pos_init, vel_init, pos_final, vel_final, time):
         
-    pos_x_init = int(input('Enter initial x position: '))
-    pos_init.append(pos_x_init)
-    pos_y_init = int(input('Enter initial y position: '))
-    pos_init.append(pos_y_init)
-    pos_z_init = int(input('Enter initial z position: '))
-    pos_init.append(pos_z_init)
+    r_x_o = int(input('Enter initial x position: '))
+    r_o.append(r_x_o)
+    r_y_o = int(input('Enter initial y position: '))
+    r_o.append(r_y_o)
+    r_z_o = int(input('Enter initial z position: '))
+    r_o.append(r_z_o)
     print
 
-    vel_x_init = int(input('Enter initial x velocity: '))
-    vel_init.append(vel_x_init)
-    vel_y_init = int(input('Enter initial y velocity: '))
-    vel_init.append(vel_y_init)
-    vel_z_init = int(input('Enter initial z velocity: '))
-    vel_init.append(vel_z_init)
+    v_x_o = int(input('Enter initial x velocity: '))
+    v_o.append(v_x_o)
+    v_y_o = int(input('Enter initial y velocity: '))
+    v_o.append(v_y_o)
+    v_z_o = int(input('Enter initial z velocity: '))
+    v_o.append(v_z_o)
     print
 
-    pos_x_final = int(input('Enter final x position: '))
-    pos_final.append(pos_x_final)
-    pos_y_final = int(input('Enter final y position: '))
-    pos_final.append(pos_y_final)
-    pos_z_final = int(input('Enter final z position: '))
-    pos_final.append(pos_z_final)
+    r_x_f = int(input('Enter final x position: '))
+    r_f.append(r_x_f)
+    r_y_f = int(input('Enter final y position: '))
+    r_f.append(r_y_f)
+    r_z_f = int(input('Enter final z position: '))
+    r_f.append(r_z_f)
     print
 
-    vel_x_final = int(input('Enter final x velocity: '))
-    vel_final.append(vel_x_final)
-    vel_y_final = int(input('Enter final y velocity: '))
-    vel_final.append(vel_y_final)
-    vel_z_final = int(input('Enter final z velocity: '))
-    vel_final.append(vel_z_final)
+    v_x_f = int(input('Enter final x velocity: '))
+    v_f.append(v_x_f)
+    v_y_f = int(input('Enter final y velocity: '))
+    v_f.append(v_y_f)
+    v_z_f = int(input('Enter final z velocity: '))
+    v_f.append(v_z_f)
     print
 
-    time = int(input('Enter time to fly path (sec): '))
+    t_f = int(input('Enter time to fly path (sec): '))
     print
 
-def print_inputs(): # pos_init, vel_init, pos_final, vel_final, time):
+def print_inputs(r_o, v_o, r_f, v_f, t_o, t_f): # pos_init, vel_init, pos_final, vel_final, time):
 
-    print(pos_init)
-    print(vel_init)
-    print(pos_final)
-    print(vel_final)
-    print(time)
+    print(r_o)
+    print(v_o)
+    print(r_f)
+    print(v_f)
+    print(t_o)
+    print(t_f)
+
+def find_trajectory(r_o, v_o, r_f, v_f, t_o, t_f):
+
+    vel_t = vel_init + ((6*r_o - 6*r_f + 6*v_f*(t_f - t_o))/(t_f - t_o)^3 - (3*v_f - 3*v_o)/(t_f - t_o)^2)*t^2 + (((4*t_f + 2*t_o)*(v_f - v_o))/(t_f - t_o)^2 - ((6*t_f + 6*t_o)*(r_o - r_f + v_f*(t_f - t_o)))/(t_f - t_o)^3)*t
+
 
 
 if __name__ == '__main__':
-    get_inputs() # pos_init, vel_init, pos_final, vel_final, time)
-    print_inputs() # pos_init, vel_init, pos_final, vel_final, time)
+    get_inputs(r_o, v_o, r_f, v_f, t_o, t_f) # pos_init, vel_init, pos_final, vel_final, time)
+    print_inputs(r_o, v_o, r_f, v_f, t_o, t_f) # pos_init, vel_init, pos_final, vel_final, time)
