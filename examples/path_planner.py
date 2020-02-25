@@ -65,3 +65,4 @@ def find_trajectory(r_o, v_o, r_f, v_f, t_o, t_f):
 if __name__ == '__main__':
     get_inputs(r_o, v_o, r_f, v_f, t_o, t_f) # pos_init, vel_init, pos_final, vel_final, time)
     print_inputs(r_o, v_o, r_f, v_f, t_o, t_f) # pos_init, vel_init, pos_final, vel_final, time)
+#big dick adian
