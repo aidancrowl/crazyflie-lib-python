@@ -98,8 +98,7 @@ class Commander():
         """
         pk = CRTPPacket()
         pk.port = CRTPPort.COMMANDER_GENERIC
-        pk.data = struct.pack('<Bffff', TYPE_VELOCITY_WORLD,
-                              vx, vy, vz, yawrate)
+        pk.data = struct.pack('<Bffff', TYPE_VELOCITY_WORLD, vx, vy, vz, yawrate)
         self._cf.send_packet(pk)
 
     def send_zdistance_setpoint(self, roll, pitch, yawrate, zdistance):
